@@ -1,0 +1,16 @@
+# docker login gitlab-registry.ozon.ru
+# docker compose -f ./docker-compose.yml build
+# docker compose push
+# docker run --rm -it -v "$PWD":/build --workdir /build --user=root:root --name magistral_flutter_cache gitlab-registry.ozon.ru/lpp/tms/mobile/magistral/flutter:cache /bin/bash
+
+version: '3.9'
+
+services:
+  flutter_cache_example:
+    container_name: 'flutter_cache_example'
+    image: flutter_cache_example
+    build:
+      context: ./
+      dockerfile: ./dockerfiles/cache.dockerfile
+      args:
+        - VERSION=stable
